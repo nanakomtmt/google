@@ -121,27 +121,26 @@ def insert_dummy_plus(tokens):
 
 def calculate_smallest_bracket(tokens,left,right):
     part_tokens=[]
-    for j in range(left[len(left)-1],right[0]):           
+    for j in range(left,right):           
         part_tokens.append(tokens[j+1])
     
     answer = calculate_tokens(part_tokens)
 
-    del tokens[left[len(left)-1]:right[0]+1]
-    tokens.insert(left[len(left)-1], {'type': 'NUMBER', 'number': answer})
+    del tokens[left:right+1]
+    tokens.insert(left, {'type': 'NUMBER', 'number': answer})
     return tokens
  
 
 def find_smallest_bracket(tokens):
-    brackets_left_index=[]
-    brackets_right_index=[]
+    brackets_left_index=0
+    brackets_right_index=0
     for i in range(len(tokens)):
         if tokens[i]['type']=='BRACKETS_LEFT':
-            brackets_left_index.append(i)
+            brackets_left_index=i
         elif tokens[i]['type']=='BRACKETS_RIGHT':
-            brackets_right_index.append(i)
+            brackets_right_index=i
             break
     return brackets_left_index,brackets_right_index
-
 def calculate_tokens(tokens):
     tokens = insert_dummy_plus(tokens)  # 最初にプラスをつける
     tokens = evaluate_times_divide(tokens)  # 掛け算割り算を先に計算
