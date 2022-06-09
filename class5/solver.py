@@ -35,12 +35,13 @@ def greedy_solve(cities):
 def swap_two_way(tour, dist):
     count=1
     while count>0:
+        #一度もswapされなかったら終了
         count = 0
         for i in range(len(tour)-2):
             for j in range(i+2, len(tour)):
                 nextJ=j+1
                 if j+1==len(tour):
-                    nextJ=0
+                    nextJ=0 #リストの最初と最後をつなぐ線も考えたいから
                 AtoB = dist[tour[i]][tour[i + 1]]
                 CtoD = dist[tour[j]][tour[nextJ]]
                 AtoC = dist[tour[i]][tour[j]]
