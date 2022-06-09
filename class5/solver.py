@@ -57,5 +57,5 @@ def swap_two_way(tour, dist):
 if __name__ == '__main__':
     assert len(sys.argv) > 1
     tour,dist = greedy_solve(read_input(sys.argv[1]))
-    tour=two_opt(tour,dist)
+    tour=swap_two_way(tour,dist)
     print_tour(tour)
