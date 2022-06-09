@@ -18,6 +18,7 @@ python3 solver.py
 ## スコアの確認
 
 python3　output_verifier.py
+outputの欄がスコアです
 
 ## プログラム
 
