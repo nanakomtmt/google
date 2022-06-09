@@ -55,7 +55,14 @@ def swap_two_way(tour, dist):
 
 
 if __name__ == '__main__':
-    assert len(sys.argv) > 1
-    tour,dist = greedy_solve(read_input(sys.argv[1]))
-    tour=swap_two_way(tour,dist)
-    print_tour(tour)
+    # assert len(sys.argv) > 1
+    for i in range(7):
+        print(str(i)+"を実行中..")
+        tour,dist = greedy_solve(read_input("input_"+str(i)+".csv"))
+        tour=swap_two_way(tour,dist)
+        f = open("output_"+str(i)+".csv", 'w')
+        f.write("index"+'\n')
+        for j in range(len(tour)):     
+            f.write(str(tour[j])+'\n')
+        # print_tour(tour)
+    
